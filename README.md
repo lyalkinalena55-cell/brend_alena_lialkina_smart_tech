@@ -1,0 +1,1 @@
+# brend_alena_lialkina_smart_tech
