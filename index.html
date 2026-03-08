@@ -44,7 +44,7 @@
             line-height: 1.7;
             overflow-x: hidden;
             font-weight: 300;
-            -webkit-font-smoothing: antialiased; /* Сглаживание шрифтов (MacOS) */
+            -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
@@ -58,7 +58,7 @@
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
         section { padding: 10rem 0; }
-        
+      
         /* DRY: Единый контейнер */
         .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
 
@@ -77,8 +77,8 @@
         }
 
         /* === ТИПОГРАФИКА === */
-        .title-xl { font-size: clamp(3.5rem, 7vw, 5.5rem); letter-spacing: -1px; margin-bottom: 1.5rem; }
-        .title-lg { font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: -0.5px; margin-bottom: 2.5rem; }
+        .title-xl { font-size: clamp(2.5rem, 8vw, 5.5rem); letter-spacing: -1px; margin-bottom: 1.5rem; }
+        .title-lg { font-size: clamp(2rem, 8vw, 4rem); letter-spacing: -0.5px; margin-bottom: 2.5rem; }
         .title-md { font-size: 2rem; margin-bottom: 1rem; }
         .subtitle { font-size: 1.15rem; font-weight: 300; margin-bottom: 3rem; color: var(--graphite-light); line-height: 1.8; }
         .accent-text { color: var(--terracotta); font-style: italic; }
@@ -131,12 +131,12 @@
         .btn:hover::before { transform: translateX(0); }
         .btn i { transition: transform 0.3s ease; }
         .btn:hover i { transform: translateX(5px); }
-        
+      
         .btn-primary { background-color: var(--terracotta); color: var(--bg-white); }
         .btn-primary::before { background-color: var(--graphite); }
         .btn-primary:hover { border-color: var(--graphite); box-shadow: 0 15px 25px rgba(26, 26, 28, 0.15); }
 
-        /* DRY: Базовый класс для всех карточек (Устраняет дублирование) */
+        /* DRY: Базовый класс для всех карточек */
         .card-base {
             padding: 4rem 3rem;
             border: 1px solid var(--border);
@@ -148,7 +148,6 @@
         header {
             position: fixed; top: 0; left: 0; right: 0; padding: 1.5rem 0;
             background-color: rgba(247, 246, 242, 0.85);
-            /* Вендорный префикс для поддержки старых iOS/Safari */
             -webkit-backdrop-filter: blur(15px);
             backdrop-filter: blur(15px);
             z-index: 100; transition: var(--transition);
@@ -158,16 +157,17 @@
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-family: var(--font-head); font-size: 1.8rem; font-weight: 500; color: var(--graphite); letter-spacing: 0.5px; }
         .logo span { font-size: 0.85rem; font-family: var(--font-body); font-weight: 400; color: var(--graphite-light); margin-left: 12px; letter-spacing: 0; border-left: 1px solid var(--border); padding-left: 12px; }
-        
+      
         /* === СЕКЦИИ === */
         /* Главный экран */
         .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 100px; }
         .hero-content { max-width: 900px; }
-        
+      
         /* Сетки (Гриды) */
         .grid-3-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-top: 4rem; }
+        .results-grid-spacing { gap: 4rem; margin: 5rem 0; }
 
-        /* Карточки формулы (наследуют .card-base) */
+        /* Карточки формулы */
         .formula-card { position: relative; }
         .formula-card::after {
             content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
@@ -179,22 +179,22 @@
         .formula-icon .step-num { font-family: var(--font-head); font-size: 1.5rem; color: var(--border); transition: var(--transition); }
         .formula-card:hover .step-num { color: var(--honey); }
         .formula-card p { color: var(--graphite-light); font-size: 1rem; }
-        
-        /* Аудитория (наследуют .card-base) */
+      
+        /* Аудитория */
         .audience { background-color: var(--bg-white); }
         .audience-card { background: var(--bg-ivory); }
         .audience-card:hover { border-color: var(--terracotta); background: var(--bg-white); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.02); }
         .audience-card h3 { font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--terracotta); }
         .audience-card p { color: var(--graphite-light); font-size: 1rem; line-height: 1.8; }
-        
-        /* Ценности (переопределяют часть .card-base) */
+      
+        /* Ценности */
         .value-section { background-color: var(--bg-ivory); }
         .value-card { padding: 3.5rem 3rem; border: none; border-left: 3px solid var(--border); background: var(--bg-white); transition: var(--transition); }
         .value-card:hover { transform: translateX(10px); border-left-color: var(--terracotta); box-shadow: 0 15px 30px rgba(0,0,0,0.03); }
         .value-card.highlight:hover { border-left-color: var(--honey); }
         .value-card h3 { font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--terracotta); margin-bottom: 1.5rem; }
         .value-card p { color: var(--graphite-light); font-size: 1rem; line-height: 1.8; }
-        
+      
         /* Процесс */
         .process-section { background-color: var(--bg-white); }
         .process-list { margin-top: 5rem; max-width: 900px; margin-left: auto; margin-right: auto; }
@@ -210,7 +210,7 @@
         .process-item:hover .process-num { opacity: 1; }
         .process-content h3 { font-family: var(--font-body); font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--graphite); margin-bottom: 1rem; }
         .process-content p { color: var(--graphite-light); font-size: 1.05rem; line-height: 1.8; }
-        
+      
         /* Результаты */
         .results-section { text-align: center; }
         .result-item { padding: 3rem; border: 1px solid var(--border); background-color: var(--bg-white); transition: var(--transition); }
@@ -218,25 +218,25 @@
         .result-number { font-family: var(--font-head); font-size: clamp(3.5rem, 6vw, 5rem); color: var(--graphite); margin-bottom: 1.5rem; line-height: 1; }
         .result-text { color: var(--graphite-light); font-size: 1.05rem; line-height: 1.6; }
         .results-footer { font-family: var(--font-body); text-transform: uppercase; font-weight: 500; letter-spacing: 3px; font-size: 0.85rem; color: var(--terracotta); margin-top: 3rem; }
-        
+      
         /* Обо мне */
         .about-section { background-color: var(--bg-ivory); position: relative; overflow: hidden; }
         .about-bg-icon { position: absolute; right: -5%; top: 50%; transform: translateY(-50%); font-size: 50vw; color: var(--bg-white); opacity: 0.6; z-index: 0; pointer-events: none; }
         .about-content { max-width: 750px; font-size: 1.15rem; color: var(--graphite-light); position: relative; z-index: 1; }
         .about-content p { margin-bottom: 1.8rem; line-height: 1.8; }
         .about-content strong { color: var(--graphite); font-weight: 500; }
-        
+      
         /* Миссия */
         .mission { background-color: var(--graphite); color: var(--bg-ivory); text-align: center; padding: 12rem 0; position: relative; }
         .mission::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--honey), transparent); opacity: 0.3; }
-        .mission blockquote { font-family: var(--font-head); font-size: clamp(2.5rem, 5vw, 3.5rem); font-style: italic; max-width: 1000px; margin: 0 auto 3rem; line-height: 1.3; color: var(--bg-white); }
+        .mission blockquote { font-family: var(--font-head); font-size: clamp(2.2rem, 5vw, 3.5rem); font-style: italic; max-width: 1000px; margin: 0 auto 3rem; line-height: 1.3; color: var(--bg-white); }
         .mission .slogan { font-family: var(--font-body); font-weight: 500; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 5px; color: var(--honey); }
-        
+      
         /* Призыв к действию */
         .cta-section { text-align: center; background-color: var(--bg-white); }
         .cta-buttons { display: flex; gap: 1.5rem; justify-content: center; margin-top: 3rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
         .cta-disclaimer { font-size: 0.9rem; color: var(--graphite-light); max-width: 500px; margin: 0 auto; font-style: italic; }
-        
+      
         /* Футер */
         footer { background-color: var(--bg-ivory); padding: 5rem 0; border-top: 1px solid var(--border); text-align: center; }
         .footer-name { font-family: var(--font-head); font-size: 1.8rem; margin-bottom: 0.5rem; font-weight: 500; }
@@ -245,26 +245,46 @@
         .social-links a { color: var(--graphite); font-size: 1.5rem; transition: var(--transition-fast); }
         .social-links a:hover { color: var(--terracotta); transform: translateY(-3px); }
         .footer-slogan { font-size: 0.75rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--graphite-light); opacity: 0.7; }
-        
+      
         /* === АНИМАЦИИ (Intersection Observer State) === */
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        
+      
         /* Задержки для плавного каскадного появления */
         .delay-1 { transition-delay: 0.15s; }
         .delay-2 { transition-delay: 0.3s; }
         .delay-3 { transition-delay: 0.45s; }
 
-        /* === АДАПТИВНОСТЬ === */
+        /* === ИДЕАЛЬНАЯ АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНОВ === */
         @media (max-width: 768px) {
-            section { padding: 6rem 0; }
-            .hero { padding-top: 120px; }
-            .grid-3-cols { grid-template-columns: 1fr; gap: 2rem; }
+            .container { padding: 0 1.25rem; }
+            section { padding: 4.5rem 0; }
+            .hero { padding-top: 100px; }
+            
+            /* Шапка и логотип */
+            .logo { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.2; font-size: 1.5rem; }
+            .logo span { margin-left: 0; padding-left: 0; border-left: none; margin-top: 0.3rem; font-size: 0.75rem; }
+            
+            /* Тексты и карточки */
+            .subtitle { font-size: 1rem; }
+            .role-tag { font-size: 0.65rem; padding: 0.4rem 0.8rem; letter-spacing: 1px; line-height: 1.4; text-align: left; margin-top: 1rem; }
+            
+            .grid-3-cols { grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+            .results-grid-spacing { gap: 1.5rem; margin: 3rem 0; }
+            
+            .card-base { padding: 2.5rem 1.5rem; }
+            .value-card { padding: 2.5rem 1.5rem; }
+            .result-item { padding: 2.5rem 1.5rem; }
+            
             .process-item { grid-template-columns: 1fr; gap: 1rem; padding: 2rem 0; }
             .process-num { font-size: 2.5rem; margin-bottom: 0.5rem; }
-            .cta-buttons { flex-direction: column; }
+            
+            .mission { padding: 6rem 0; }
+            
+            .cta-buttons { flex-direction: column; gap: 1rem; }
+            .btn { width: 100%; padding: 1rem 1.5rem; }
+            
             .about-bg-icon { display: none; }
-            .btn { width: 100%; }
         }
     </style>
 </head>
@@ -290,7 +310,6 @@
        <div class="container">
            <h2 class="title-lg reveal">Архитектура <span class="accent-text">роста</span></h2>
            <div class="grid-3-cols">
-               <!-- Использование базового класса card-base (DRY) -->
                <div class="card-base formula-card reveal">
                    <div class="formula-icon"><i class="fa-solid fa-magnifying-glass-chart"></i><span class="step-num">01</span></div>
                    <h3 class="title-md">Аналитика</h3>
@@ -399,7 +418,7 @@
    <section class="results-section">
        <div class="container">
            <h2 class="title-lg reveal">Твердые <span class="accent-text">цифры</span></h2>
-           <div class="grid-3-cols" style="gap: 4rem; margin: 5rem 0;">
+           <div class="grid-3-cols results-grid-spacing">
                <div class="result-item reveal">
                    <div class="result-number">1199%</div>
                    <h3 style="font-family: var(--font-body); font-size: 1.1rem; font-weight: 600; text-transform: uppercase; margin-bottom: 0.8rem; letter-spacing: 1px;">ROAS</h3>
@@ -445,7 +464,6 @@
            <h2 class="title-lg">Готовы трансформировать <span class="accent-text">свой продукт?</span></h2>
            <p class="subtitle" style="margin-bottom: 2rem;">Напишите мне кодовое слово <strong>АУДИТ</strong>, и мы обсудим точки кратного роста вашего бизнеса.</p>
            <div class="cta-buttons">
-               <!-- Безопасность OWASP: Добавлен атрибут rel="noopener noreferrer" -->
                <a href="https://t.me/Alena_Pesh" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i class="fa-brands fa-telegram" style="margin-right: 12px; font-size: 1.2rem;"></i> Обсудить в Telegram</a>
                <a href="https://www.instagram.com/alena.lialkina/" target="_blank" rel="noopener noreferrer" class="btn"><i class="fa-brands fa-instagram" style="margin-right: 12px; font-size: 1.2rem;"></i> Написать в Instagram</a>
            </div>
@@ -458,7 +476,6 @@
            <div class="footer-name">Елена Лялькина</div>
            <div class="footer-role">Стратег & AI-интегратор</div>
            <div class="social-links">
-               <!-- Безопасность OWASP: Добавлен атрибут rel="noopener noreferrer" -->
                <a href="https://t.me/Alena_Pesh" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
                <a href="https://www.instagram.com/alena.lialkina/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
            </div>
@@ -467,34 +484,28 @@
    </footer>
 
    <script>
-       // Логика шапки (оставляем легкой)
        const header = document.getElementById('header');
        window.addEventListener('scroll', () => {
            if (window.scrollY > 50) header.classList.add('scrolled');
            else header.classList.remove('scrolled');
-       }, { passive: true }); // passive: true улучшает производительность скролла
+       }, { passive: true });
 
-       // РЕФАКТОРИНГ JS: Используем Intersection Observer вместо тяжелого события onScroll
-       // Это современный стандарт (поддерживается всеми браузерами последние 5-6 лет), 
-       // который не "убивает" процессор мобильного телефона при скролле.
        document.addEventListener("DOMContentLoaded", () => {
            const observerOptions = {
                root: null,
                rootMargin: '0px',
-               threshold: 0.15 // Элемент появляется, когда 15% его видно на экране
+               threshold: 0.15 
            };
 
            const observer = new IntersectionObserver((entries, observer) => {
                entries.forEach(entry => {
                    if (entry.isIntersecting) {
                        entry.target.classList.add('active');
-                       // Перестаем следить за элементом после того, как он появился один раз
                        observer.unobserve(entry.target); 
                    }
                });
            }, observerOptions);
 
-           // Находим все элементы для анимации и передаем их наблюдателю
            const reveals = document.querySelectorAll('.reveal');
            reveals.forEach(el => observer.observe(el));
        });
